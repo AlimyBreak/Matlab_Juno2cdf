@@ -44,6 +44,6 @@
 
 ```
 2. test_main给出了一个读取范例。
-3. pcode编译版本：Matlab R2020a
+3. 不鼓励研究人员过于被二进制文件的处理过程吸引或困惑，所以加密了源代码。pcode编译版本：Matlab R2020a。
 Author: YQW/alimy1990@foxmail.com
 2022年8月18日 16:31:38

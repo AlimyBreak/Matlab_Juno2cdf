@@ -8,7 +8,8 @@
 + WAV_Survey
   + Survey(ING)
   + Burst(ING)
-+ JAD(ING)
++ JAD
+  + L3 ✔
 + JEDI(ING)
 
 ---
@@ -21,4 +22,4 @@ Matlab版本: R2020a
 
 alimy1990@foxmail.com
 
-YQW/2022.02.21
+YQW/2022.08.18
