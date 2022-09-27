@@ -1,4 +1,4 @@
-0. 这是一个读取JADE仪器L3等级lbl和dat文件的工具，使用Matlab语言编写。
+0. 这是一个读取JADE仪器L3等级*V03.lbl和\*V03.dat文件的工具，使用Matlab语言编写。
 1. 工作函数说明
 + juno_jad_analyse_lable_V02:分析lbl文件中的信息，需要输入lbl文件所在的全路径，以结构体返回相关信息。
 ```matlab
@@ -48,3 +48,9 @@
 3. 不鼓励研究人员过于被二进制文件的处理过程吸引或困惑，所以加密了源代码。pcode编译版本：Matlab R2020a。
 
 4. Author: YQW/alimy1990@foxmail.com 2022年8月18日 16:31:38
+
+***
+
+juno_jad_analyse_dat_V02.p 和 juno_jad_analyse_lable_V02.p 写的时候pdsppi节点的数据还是以\*V03.lbl(dat)结尾，现在发现对新发布了以\*V04.lbl(dat)
+
+目前支持不是太好，而且还没空更新，=.=。
