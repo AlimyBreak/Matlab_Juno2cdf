@@ -51,6 +51,6 @@
 
 ***
 
-juno_jad_analyse_dat_V02.p 和 juno_jad_analyse_lable_V02.p 写的时候pdsppi节点的数据还是以\*V03.lbl(dat)结尾，现在发现对新发布了以\*V04.lbl(dat)
+juno_jad_analyse_dat_V02.p 和 juno_jad_analyse_lable_V02.p 写的时候pdsppi节点的数据还是以\*V03.lbl(dat)结尾，现在官方新发布了以\*V04.lbl(dat)的版本，
 
-目前支持不是太好，而且还没空更新，=.=。
+目前对V04版本并不支持，而且还没空更新，=.=。
