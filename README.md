@@ -3,14 +3,13 @@
 
 + FGM
   + r1s ✔
-  + 64Hz(ING)
-  + r60s(ING)
 + WAV_Survey
-  + Survey(ING)
-  + Burst(ING)
+  + Survey
+  + Burst
 + JAD
   + L3 ✔
-+ JEDI(ING)
++ JEDI
+  + ✔
 
 ---
 
@@ -22,4 +21,4 @@ Matlab版本: R2020a
 
 alimy1990@foxmail.com
 
-YQW/2022.08.18
+YQW/2022.10.22
