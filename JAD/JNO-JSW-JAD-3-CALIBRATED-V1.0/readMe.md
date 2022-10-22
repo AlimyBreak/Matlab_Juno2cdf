@@ -1,56 +1,50 @@
-0. 这是一个读取JADE仪器L3等级*V03.lbl和\*V03.dat文件的工具，使用Matlab语言编写。
+0. 这是一个读取JADE仪器L3等级\*V04.lbl和\*V04.dat文件的工具(\*V03.lbl和\*V03.dat也支持)，使用Matlab语言编写。
 1. 工作函数说明
-+ juno_jad_analyse_lable_V02:分析lbl文件中的信息，需要输入lbl文件所在的全路径，以结构体返回相关信息。
++ juno_jad_analyse_lable_V03:分析lbl文件中的信息，需要输入lbl文件所在的全路径，以结构体返回相关信息。
 ```matlab
 %{
-    juno_jad_analyse_lable_V02: YQW/2021.12.07
-    用于分析lable文件信息,返回值用于后续dat文件读取.
-    预备支持的*.lbl文件序列(※开头表示已经支持了)
-    电子
-        ※JAD_L30_HRS_ELC_ALL_CNT_*_V03.lbl
-        ※JAD_L30_HRS_ELC_TWO_CNT_*_V03.lbl
-        ※JAD_L30_LRS_ELC_ANY_CNT_*_V03.lbl
-    离子(未测试是否可以)
-        JAD_L30_HLS_ION_LOG_CNT_*_V02.lbl
-        JAD_L30_HRS_ION_ANY_CNT_*_V02.lbl
-        JAD_L30_LRS_ION_ANY_CNT_*_V02.lbl
-        JAD_L30_HLS_ION_TOF_CNT_*_V02.lbl
+	修复了读取某些ION_TOF数据文件报错的bug.
+	juno_jad_analyse_lable_V03: YQW/2022.10.22 
+	(※表示已经支持了)
+		※JAD_L30_HRS_ELC_ALL_CNT_*_V04.lbl
+		※JAD_L30_HRS_ELC_TWO_CNT_*_V04.lbl
+		※JAD_L30_LRS_ELC_ANY_CNT_*_V04.lbl
+		※JAD_L30_HLS_ION_LOG_CNT_*_V04.lbl
+		※JAD_L30_HRS_ION_ANY_CNT_*_V04.lbl
+		※JAD_L30_LRS_ION_ANY_CNT_*_V04.lbl
     输入:
-        fullpath_lbl        :   *.lbl 的全路径
+		fullpath_lbl        :   *.lbl 的全路径
     输出:
-        lbl_info_s          :   读取dat文件所需要的信息，使用者不需要关心细节
+		block_size          :   一个块对应的大小(Bytes)
+		block_objects_num   :   一个块中成员对象的个数
+		block_objects_name  :   一个块中成员对象的名字
+		block_objects_dims  :   维度尺寸(方便后续reshape)
+		block_fmt           :   字符串或者cell(用于对dat文件进行分析)
+		block_num           :   块数量(对应*.dat文件中有多少个block_size大小的块)
+References:
+1. https://stackoverflow.com/questions/66686265/importing-dat-files-in-python-without-knowing-how-it-is-structured
+2. https://gist.github.com/boyank/d9640e9c4dc3877012b8fb4dc9f6c053
+%}
 ```
 
 + juno_jad_analyse_dat_V02: 通过lbl_info_s对对应的dat文件进行读取。
 ```matlab
 %{
-    juno_jad_analyse_dat_V02: YQW/2021.12.08
-    用于获取dat文件信息
-    预备支持的*.dat文件序列(※开头表示已经支持了)
-    电子
-        ※JAD_L30_HRS_ELC_ALL_CNT_*_V03.lbl
-        ※JAD_L30_HRS_ELC_TWO_CNT_*_V03.lbl
-        ※JAD_L30_LRS_ELC_ANY_CNT_*_V03.lbl
-    离子(未测试是否可以)
-        JAD_L30_HLS_ION_LOG_CNT_*_V02.lbl
-        JAD_L30_HRS_ION_ANY_CNT_*_V02.lbl
-        JAD_L30_LRS_ION_ANY_CNT_*_V02.lbl
-        JAD_L30_HLS_ION_TOF_CNT_*_V02.lbl
+	juno_jad_analyse_dat_V03: YQW/2022.10.22 
     输入:
-        fullpath_dat        :   *.dat 文件的全路径
-        lbl_info_s          :   lbl文件返回的信息结构体，使用者不需要关心细节.
+        fullpath_dat        :   *.dat 的全路径
+        block_size          :   一个块对应的大小(Bytes)
+        block_objects_num   :   一个块中成员对象的个数
+        block_objects_name  :   一个块中成员对象的名字
+        block_fmt           :   字符串或者cell(用于对dat文件进行分析)
+        block_num           :   块数量(对应*.dat文件中有多少个block_size大小的块)
     输出:
-        data_s              :   以struct返回dat中的数据文件
+        data_s              :   以struct返回数据
 %}
 
 ```
 2. test_main给出了一个读取范例。
 3. 不鼓励研究人员过于被二进制文件的处理过程吸引或困惑，所以加密了源代码。pcode编译版本：Matlab R2020a。
-
-4. Author: YQW/alimy1990@foxmail.com 2022年8月18日 16:31:38
+4. Author: YQW/alimy1990@foxmail.com 2022-10-22 23:44:19
 
 ***
-
-juno_jad_analyse_dat_V02.p 和 juno_jad_analyse_lable_V02.p 写的时候pdsppi节点的数据还是以\*V03.lbl(dat)结尾，现在官方新发布了以\*V04.lbl(dat)的版本，
-
-目前对V04版本并不支持，而且还没空更新，=.=。
