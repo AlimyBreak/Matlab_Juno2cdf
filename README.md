@@ -17,8 +17,9 @@ Matlab版本: R2020a
 
 ---
 
+增加了PythonCode，使用pdr和spacepy库来读取十分方便。
 
-
+---
 alimy1990@foxmail.com
 
-YQW/2022.10.22
+YQW/2022年11月15日 21:14:31
