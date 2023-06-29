@@ -12,6 +12,7 @@ dat_file = strrep(strrep(lbl_file,'.lbl','.dat'),'.LBL','.dat');
 
 cdf_dst_path = strrep(strrep(lbl_file,'.lbl','.cdf'),'.LBL','.cdf');
 fileds = fieldnames(data_s);
+% cdfwrite corresponds to the matlab_cdf350_patch-64 toolbox 
 for jj = 1:length(fileds)
     if jj == 1
         cdfwrite(cdf_dst_path, {fileds{jj}, getfield(data_s,fileds{jj})}); 
