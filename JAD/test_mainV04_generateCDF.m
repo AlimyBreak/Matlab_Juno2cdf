@@ -2,17 +2,15 @@ close all;
 clear;
 clc;
 
-lbl_file = 'C:\Users\admin\Desktop\JAD2CDF_V01_20220305\2016240\ION_TOF\JAD_L30_HLS_ION_TOF_CNT_2016240_V04.lbl';
+lbl_file = 'F:\JUNO_pdsppi\JNO-J_SW-JAD-5-CALIBRATED-V1.0\data\2017\2017078\ELECTRONS\JAD_L50_LRS_ELC_ANY_DEF_2017078_V01.lbl';
 dat_file = strrep(strrep(lbl_file,'.lbl','.dat'),'.LBL','.dat');
 
-[lbl_s] = juno_jad_analyse_lable_V03(lbl_file);
-[data_s] = juno_jad_analyse_dat_V03(dat_file,lbl_s);
+[lbl_s] = juno_jad_analyse_lable_V04(lbl_file);
+[data_s] = juno_jad_analyse_dat_V04(dat_file,lbl_s);
 
 
-
-cdf_dst_path = strrep(strrep(lbl_file,'.lbl','.cdf'),'.LBL','.cdf');
+cdf_dst_path = 'JAD_L50_LRS_ELC_ANY_DEF_2017078_V01.cdf';%strrep(strrep(lbl_file,'.lbl','.cdf'),'.LBL','.cdf');
 fileds = fieldnames(data_s);
-% cdfwrite corresponds to the matlab_cdf350_patch-64 toolbox 
 for jj = 1:length(fileds)
     if jj == 1
         cdfwrite(cdf_dst_path, {fileds{jj}, getfield(data_s,fileds{jj})}); 
